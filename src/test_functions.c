@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lde-alen <lde-alen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/17 17:42:18 by alelievr          #+#    #+#             */
-/*   Updated: 2020/07/03 15:35:48 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/30 10:39:23 by lde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -504,247 +504,6 @@ void            test_ft_memcpy(void){
 	add_fun_subtest(test_ft_memcpy_double_null1);
 	add_fun_subtest(test_ft_memcpy_double_null2);
 	add_fun_subtest(test_ft_memcpy_speed);
-}
-
-////////////////////////////////
-//         ft_memccpy         //
-////////////////////////////////
-
-void			test_ft_memccpy_basic_test(void *ptr) {
-	typeof(memccpy)	*ft_memccpy = ptr;
-	SET_EXPLANATION("your memccpy doesn't work with basic params");
-
-	SANDBOX_RAISE(
-			char	src[] = "test basic du memccpy !";
-			char	buff1[22];
-			char	buff2[22];
-
-			memccpy(buff1, src, 'm', 6);
-			ft_memccpy(buff2, src, 'm', 6);
-			if (!memcmp(buff1, buff2, 6))
-				exit(TEST_SUCCESS);
-			SET_DIFF(buff1, buff2);
-			exit(TEST_FAILED);
-			);
-
-}
-
-void			test_ft_memccpy_memory_unsigned(void *ptr) {
-	typeof(memccpy)	*ft_memccpy = ptr;
-	SET_EXPLANATION("your memccpy doesn't cast the memory into unsigned char");
-
-	SANDBOX_RAISE(
-			char	buff1[] = "abcdefghijklmnopqrstuvwxyz";
-			char	buff2[] = "abcdefghijklmnopqrstuvwxyz";
-			char	*src = "string with\200inside !";
-
-			memccpy(buff1, src, '\200', 21);
-			ft_memccpy(buff2, src, '\200', 21);
-
-			if (!memcmp(buff1, buff2, 21))
-				exit(TEST_SUCCESS);
-			SET_DIFF(buff1, buff2);
-			exit(TEST_FAILED);
-			);
-
-}
-
-void			test_ft_memccpy_stop_char_unsigned(void *ptr) {
-	typeof(memccpy)	*ft_memccpy = ptr;
-	SET_EXPLANATION("your memccpy doesn't cast the stop-character into unsigned char");
-
-	SANDBOX_RAISE(
-			char	buff1[] = "abcdefghijklmnopqrstuvwxyz";
-			char	buff2[] = "abcdefghijklmnopqrstuvwxyz";
-			char	*src = "string with\200inside !";
-
-			memccpy(buff1, src, 0600, 21);
-			ft_memccpy(buff2, src, 0600, 21);
-
-			if (!memcmp(buff1, buff2, 21))
-				exit(TEST_SUCCESS);
-			SET_DIFF(buff1, buff2);
-			exit(TEST_FAILED);
-			);
-
-}
-
-void			test_ft_memccpy_return(void *ptr) {
-	typeof(memccpy)	*ft_memccpy = ptr;
-	SET_EXPLANATION("your memccpy's return is false/doesn't work with basic params");
-
-	SANDBOX_RAISE(
-			char	src[] = "test basic du memccpy !";
-			char	buff1[22];
-
-			memset(buff1, 0, sizeof(buff1));
-
-			char	*r1 = memccpy(buff1, src, 'm', 22);
-			char	*r2 = ft_memccpy(buff1, src, 'm', 22);
-			SET_DIFF(r1, r2);
-			ASSERT_RETURN_VALUE(r1, r2);
-
-			r1 = memccpy("", src, 'm', 0);
-			r2 = ft_memccpy("", src, 'm', 0);
-			SET_DIFF("", "");
-			ASSERT_RETURN_VALUE(r1, r2);
-			exit(TEST_SUCCESS);
-			);
-
-}
-
-void			test_ft_memccpy_not_found(void *ptr) {
-	typeof(memccpy)	*ft_memccpy = ptr;
-	SET_EXPLANATION("your memccpy does not work with not found char");
-
-	SANDBOX_RAISE(
-			char	src[] = "test basic du memccpy !";
-			char	buff1[22];
-			char	buff2[22];
-
-			char	*r1 = memccpy(buff1, src, 'z', 22);
-			char	*r2 = ft_memccpy(buff2, src, 'z', 22);
-			if (r1 == r2)
-				exit(TEST_SUCCESS);
-			SET_DIFF(r1, r2);
-			exit(TEST_FAILED);
-			);
-
-}
-
-void			test_ft_memccpy_zero_value(void *ptr) {
-	typeof(memccpy)	*ft_memccpy = ptr;
-	SET_EXPLANATION("your memccpy does not work when call with 0");
-
-	SANDBOX_RAISE(
-			char	buff[] = "test 0 \0du\0 memccpy !";
-			char	*src = STRING_4;
-			char	buff2[] = STRING_4;
-
-			ft_memccpy(buff2, buff, '\0', 0);
-			if (!memcmp(src, buff2, strlen(buff2)))
-				exit(TEST_SUCCESS);
-			SET_DIFF(src, buff2);
-			exit(TEST_FAILED);
-			);
-
-}
-
-void			test_ft_memccpy_basic_test2(void *ptr) {
-	typeof(memccpy)	*ft_memccpy = ptr;
-	SET_EXPLANATION("your memccpy does not work with basic params");
-
-	SANDBOX_RAISE(
-			char	src[] = STRING_3;
-			char	buff1[] = STRING_1;
-			char	buff2[] = STRING_1;
-
-			memccpy(buff1, src, ' ', strlen(src));
-			ft_memccpy(buff2, src, ' ', strlen(src));
-			if (!memcmp(buff1, buff2, strlen(buff2)))
-				exit(TEST_SUCCESS);
-			SET_DIFF(buff1, buff2);
-			exit(TEST_FAILED);
-			);
-
-}
-
-void			test_ft_memccpy_to_small(void *ptr) {
-	typeof(memccpy)	*ft_memccpy = ptr;
-	SET_EXPLANATION("your memccpy does not segfault dst is not big enough");
-
-	SANDBOX_IRAISE(
-			ft_memccpy("", "segfaulter tu dois", '\0', 17);
-			);
-}
-
-void			test_ft_memccpy_struct(void *ptr) {
-	typeof(memccpy)	*ft_memccpy = ptr;
-	SET_EXPLANATION("your memccpy does not work with basic params");
-	t_test src = {"nyancat® inside", (void*)0xdeadbeef, 0x42424242424242L, 0b1010100010};
-
-	SANDBOX_RAISE(
-			char	buff1[0xF00];
-			char	buff2[0xF00];
-
-			memccpy(buff1, &src, '\x42', sizeof(src));
-			ft_memccpy(buff2, &src, '\x42', sizeof(src));
-			if (!memcmp(buff1, buff2, strlen(buff2)))
-				exit(TEST_SUCCESS);
-			SET_DIFF(buff1, buff2);
-			exit(TEST_FAILED);
-			);
-
-}
-
-void			test_ft_memccpy_electric_memory(void *ptr) {
-	typeof(memccpy)	*ft_memccpy = ptr;
-	SET_EXPLANATION("your memccpy crash because it read/write too many bytes !");
-
-	SANDBOX_RAISE(
-			const size_t	size = 10;
-			char	*src = electric_alloc(size);
-			char	*buff = electric_alloc(size);
-
-			strcpy(src, "NYANCATSH");
-
-			mprotect(buff - 4096 + size, 4096, PROT_WRITE);
-			mprotect(src - 4096 + size, 4096, PROT_READ);
-
-			ft_memccpy(buff, &src, '\0', size);
-			exit(TEST_SUCCESS);
-			);
-
-}
-
-void			test_ft_memccpy_null1(void *ptr) {
-	typeof(memccpy)	*ft_memccpy = ptr;
-	SET_EXPLANATION("your memccpy does not segv with NULL on first params");
-
-	SANDBOX_IRAISE(
-			ft_memccpy(NULL, "segfaulter tu dois", 'e', 17);
-			);
-}
-
-void			test_ft_memccpy_null2(void *ptr) {
-	typeof(memccpy)	*ft_memccpy = ptr;
-	SET_EXPLANATION("your memccpy does not segv with NULL on second params");
-
-	SANDBOX_IRAISE(
-			ft_memccpy("            ", NULL, ' ', 17);
-			);
-}
-
-void			test_ft_memccpy_speed(void *ptr) {
-	typeof(memccpy)	*ft_memccpy = ptr;
-
-	SANDBOX_SPEED(
-			size_t	size = BFSIZE * 16;
-			char	*src = malloc(size + 1);
-			char	*buff1 = malloc(size + 1);
-
-			memset(src, 'A', size);
-			,
-			memccpy(buff1, src, '\\', size);
-			,
-			ft_memccpy(buff1, src, '\\', size);
-			);
-}
-
-void            test_ft_memccpy(void){
-	add_fun_subtest(test_ft_memccpy_basic_test);
-	add_fun_subtest(test_ft_memccpy_memory_unsigned);
-	add_fun_subtest(test_ft_memccpy_stop_char_unsigned);
-	add_fun_subtest(test_ft_memccpy_return);
-	add_fun_subtest(test_ft_memccpy_not_found);
-	add_fun_subtest(test_ft_memccpy_zero_value);
-	add_fun_subtest(test_ft_memccpy_basic_test2);
-	add_fun_subtest(test_ft_memccpy_to_small);
-	add_fun_subtest(test_ft_memccpy_struct);
-	add_fun_subtest(test_ft_memccpy_electric_memory);
-	add_fun_subtest(test_ft_memccpy_null1);
-	add_fun_subtest(test_ft_memccpy_null2);
-	add_fun_subtest(test_ft_memccpy_speed);
 }
 
 ////////////////////////////////
@@ -7934,7 +7693,7 @@ void			test_ft_lstsize_basic(void *ptr) {
 			t_list	*l;
 			int actual;
 			int expected;
-	
+
 			l = lstnew(strdup("1"));
 			l->next = lstnew(strdup("2"));
 			l->next->next = lstnew(strdup("3"));
@@ -7955,7 +7714,7 @@ void			test_ft_lstsize_null(void *ptr) {
 			t_list	*l = NULL;
 			int actual;
 			int expected = 0;
-	
+
 			actual = ft_lstsize(l);
 			if (actual == expected)
 				exit(TEST_SUCCESS);
@@ -7981,7 +7740,7 @@ void			test_ft_lstlast_basic(void *ptr) {
 			t_list	*l;
 			t_list	*expected;
 			t_list	*actual;
-	
+
 			l = lstnew(strdup("1"));
 			l->next = lstnew(strdup("2"));
 			l->next->next = lstnew(strdup("3"));

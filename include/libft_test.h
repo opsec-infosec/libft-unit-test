@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft_test.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-alen <lde-alen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created  2015/11/13 20:23:36 by alelievr          #+#    #+#             */
-/*   Updated: 2019/10/20 11:01:59 by juligonz         ###   ########.fr       */
+/*   Created: 2015/11/13 20:23:36 by alelievr          #+#    #+#             */
+/*   Updated: 2021/09/30 10:39:21 by lde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,7 +295,6 @@ void	ft_sig_failed(int s);
 void			test_ft_memset(void);
 void			test_ft_bzero(void);
 void			test_ft_memcpy(void);
-void			test_ft_memccpy(void);
 void			test_ft_memmove(void);
 void			test_ft_memchr(void);
 void			test_ft_memcmp(void);
@@ -370,7 +369,6 @@ void			test_ft_strlcpy(void);
 void			bench_ft_memset(void);
 void			bench_ft_bzero(void);
 void			bench_ft_memcpy(void);
-void			bench_ft_memccpy(void);
 void			bench_ft_memmove(void);
 void			bench_ft_memchr(void);
 void			bench_ft_memcmp(void);

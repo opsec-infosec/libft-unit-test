@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inyancat         <inyancat@student.42.fr>  +#+  +:+       +#+        */
+/*   By: lde-alen <lde-alen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created  2016/11/11 16:22:51 by inyancat          #+#    #+#             */
-/*   Updated  2016/11/12 20:18:11 by inyancat         ###   ########.fr       */
+/*   Created: 2016/11/11 16:22:51 by inyancat          #+#    #+#             */
+/*   Updated: 2021/09/30 10:39:20 by lde-alen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,6 @@ int		test_main_strncmp(void *fun);
 int		test_main_strcpy(void *fun);
 int		test_main_memset(void *fun);
 int		test_main_memcpy(void *fun);
-int		test_main_memccpy(void *fun);
 int		test_main_memmove(void *fun);
 int		test_main_memchr(void *fun);
 int		test_main_memcmp(void *fun);
