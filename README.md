@@ -1,5 +1,6 @@
 ##  Modification from original
 The memccpy has been removed from the unit tests in this repo.  memccpy is not part of the requirment for the libft.a
+Moved ft_striteri to the normal function sections instead of the bonus section.
 
 ##	libft Unit tests
 
