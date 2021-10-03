@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-alen <lde-alen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfurneau <dfurneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/17 17:30:13 by alelievr          #+#    #+#             */
-/*   Updated: 2021/09/30 10:39:22 by lde-alen         ###   ########.fr       */
+/*   Updated: 2021/10/03 14:21:39 by dfurneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ t_libft_test	fun_test_table[] = {
 	{"ft_split", test_ft_split, 2, 1},
 	{"ft_itoa", test_ft_itoa, 2, 1},
 	{"ft_strmapi", test_ft_strmapi, 2, 1},
+	{"ft_striteri", test_ft_striteri, 2, 1},
 	{"ft_putchar_fd", test_ft_putchar_fd, 2, 1},
 	{"ft_putstr_fd", test_ft_putstr_fd, 2, 1},
 	{"ft_putendl_fd", test_ft_putendl_fd, 2, 1},
@@ -93,7 +94,6 @@ t_libft_test	fun_test_table[] = {
 	{"ft_strdel", test_ft_strdel, 3, 0},
 	{"ft_strclr", test_ft_strclr, 3, 0},
 	{"ft_striter", test_ft_striter, 3, 0},
-	{"ft_striteri", test_ft_striteri, 3, 0},
 	{"ft_strmap", test_ft_strmap, 3, 0},
 	{"ft_strequ", test_ft_strequ, 3, 0},
 	{"ft_strnequ", test_ft_strnequ, 3, 0},
